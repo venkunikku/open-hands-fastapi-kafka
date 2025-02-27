@@ -11,9 +11,10 @@ RUN apt-get update && \
     librdkafka-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy the project files
-COPY pyproject.toml setup.cfg ./
+# Copy all necessary files for building the package
+COPY pyproject.toml setup.cfg MANIFEST.in README.md LICENSE ./
 COPY src ./src
+COPY scripts ./scripts
 
 # Install the package
 RUN pip install --no-cache-dir -e .

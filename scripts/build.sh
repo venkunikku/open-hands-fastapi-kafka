@@ -10,9 +10,9 @@ command_exists() {
 
 # Function to check Python version
 check_python_version() {
-    python_version=$(python3 -c 'import sys; print(f"{sys.version_info.major}.{sys.version_info.minor}")')
-    if (( $(echo "$python_version < 3.9" | bc -l) )); then
-        echo "Error: Python 3.9 or higher is required (found $python_version)"
+    python_version=$(python3 -c 'import sys; v=sys.version_info; print(f"{v.major}{v.minor}")')
+    if [ "$python_version" -lt 39 ]; then
+        echo "Error: Python 3.9 or higher is required (found $(python3 --version))"
         exit 1
     fi
 }

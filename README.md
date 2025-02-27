@@ -51,12 +51,20 @@ docker-compose up --build -d
    ```
 
 2. Run the build script (creates virtual environment and builds the package):
+
+   **On Linux/macOS:**
    ```bash
    # Make the script executable
    chmod +x scripts/build.sh
 
    # Run the build script
    ./scripts/build.sh
+   ```
+
+   **On Windows:**
+   ```cmd
+   # Run the build script
+   scripts\build.bat
    ```
 
    The build script will:
@@ -67,9 +75,20 @@ docker-compose up --build -d
    - Provide installation instructions
 
 3. Install the package:
+
+   First, activate the virtual environment:
+
+   **On Linux/macOS:**
    ```bash
-   # Activate the virtual environment created by build.sh
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   source venv/bin/activate
+   ```
+
+   **On Windows:**
+   ```cmd
+   venv\Scripts\activate
+   ```
+
+   Then install the package:
 
    # For development (editable install)
    pip install -e .
